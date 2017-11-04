@@ -130,6 +130,8 @@ def gen_clause(l):
 
 
 def format_sentence(l):
+    if len(l) == 0:
+        return ""
     ret = l[0][0].upper() + l[0][1:].lower()
     for word in l[1:]:
         if word is ',':
