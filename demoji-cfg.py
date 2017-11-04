@@ -13,6 +13,8 @@ l = [{'N': ['boy', 'man', 'person'], 'V': ['boyed', 'made'], 'A': ['boyish', 'ma
 {'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']},
 {'N': ['cat'], 'V': [], 'A': [''], 'S': ['', '', '']},
      ]
+test_clauses = [[('ANVS', "The boy runs"), ('ANVS', "The man runs"), ('ANVS', "The boy exercises")], [('ANVS',"the kid reads the book"),('ANVS',"the student reads the book"),('ANVS',"the kid reads an article")],
+                [('N',"the dog"),('N',"the pet"),('N',"the friend")]]
 perm = {1: ['N'], 2: ['AN', 'NV'], 3:['ANV', 'NVS'], 4: ['ANVS']}
 
 grammar = """
