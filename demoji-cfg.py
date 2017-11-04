@@ -14,32 +14,41 @@ l = [{'N': ['boy', 'man', 'person'], 'V': ['boyed', 'made'], 'A': ['boyish', 'ma
 perm = {1: ['N'], 2: ['AN', 'NV'], 3:['ANV', 'NVS'], 4: ['ANVS']}
 
 grammar = """
-S -> NP VP
+Se -> NP VP
 NP -> Det AP
 Det -> 'The'
-AP -> ADJ N
-ADJ -> 'sad'
-N -> 'dog'
-VP -> V ADV
-V -> 'ran'
-ADV -> 'sadly'
+AP -> A N
+VP -> V S
 """
 
 def gen(l):
-    strs = []
+    sequences = []
     while(len(l)>= 4):
-        strs += [gen_clause(l[:4])]
+        sequences += [gen_clause(l[:4])]
         l = l[4:]
 
     if len(l) > 0:
-        strs += [gen_clause(l)]
+        sequences += [gen_clause(l)]
 
-    generated_strs = build_cfg_strings(strs)
-    # return find_best(strs)
-    return strs
+    generated_strs = build_cfg_strings(sequences)
+    return generated_strs
 
-def build_cfg_strings(strs):
-    pass
+
+def build_cfg_strings(sequences):
+    seq_list = []
+    for seq in sequences:
+        key = list(seq.keys())[0]
+        for tuple in seq[key]:
+            local_grammar = grammar
+            for index, word in enumerate(tuple):
+                local_grammar += "{} -> '{}'\n".format(key[index], word)
+                sentence = ""
+                for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
+                    sentence = ' '.join(s)
+                if len(sentence) > 0:
+                    seq_list.append((key, sentence))
+    return seq_list
+
 
 def gen_clause(l):
     # Returns CFG strings for all possible permutations.
@@ -52,11 +61,14 @@ def gen_clause(l):
         # a is a list of lists of possible words per POS. this will be turned into a permutation lists.
         a = []
         for emoji_index in range(len(pos_string)):
-            # l[emoji_index] is emoji dict, pos_string[emoji_index] is the desired POS for that emoji.
             a.append(l[emoji_index][pos_string[emoji_index]])
         pos_perms = list(itertools.product(*a))
         cfg_values[pos_string] = pos_perms
     # return build_cfg_strings(cfg_values)
     return cfg_values
 
+
 print(gen(l))
+#gen(l)
+#for sentence in generate(CFG.fromstring(grammar), n=100):
+#    print(' '.join(sentence))
