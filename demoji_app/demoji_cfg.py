@@ -116,7 +116,7 @@ def gen_clause(l):
     # At a pos_string in cfg_values, there exists a list of lists of words in that POS_String order.
     # Example output:
     # {"NV": [['dog', 'run'], ['pet', 'exercise']]}
-    cfg_values = {} #{'a':[], 'n': [], 'v': [], 'r': []}
+    cfg_values = {}
     for pos_string in perm[len(l)]:
         # a is a list of lists of possible words per POS. this will be turned into a permutation lists.
         a = []
@@ -133,7 +133,10 @@ def gen_clause(l):
 def format_sentence(l):
     ret = l[0][0].upper() + l[0][1:].lower()
     for word in l[1:]:
-        ret += " " + word
+        if word is ',':
+            ret += word
+        else:
+            ret += " " + word
     ret += "."
     return ret
 
