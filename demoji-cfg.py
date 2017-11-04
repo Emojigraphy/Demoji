@@ -10,7 +10,9 @@ import itertools
 l = [{'N': ['boy', 'man', 'person'], 'V': ['boyed', 'made'], 'A': ['boyish', 'manly', 'masculine'], 'S': ['manly']},
 {'N': ['dog', 'pet', 'friend'], 'V': ['dogly'], 'A': ['doggy'], 'S': ['doggly']},
 {'N': ['runner'], 'V': ['run', 'exercise'], 'A': ['athletic'], 'S': ['athletically']},
-{'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']}]
+{'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']},
+{'N': ['cat'], 'V': [], 'A': [''], 'S': ['', '', '']},
+     ]
 perm = {1: ['N'], 2: ['AN', 'NV'], 3:['ANV', 'NVS'], 4: ['ANVS']}
 
 grammar = """
@@ -20,6 +22,11 @@ Det -> 'The'
 AP -> A N
 VP -> V S
 """
+
+# combine_grammar = """
+# Se -> ANVS N
+# NP -> 'with' N
+# """
 
 def gen(l):
     sequences = []
@@ -39,42 +46,26 @@ def gen(l):
     generated_strs = build_cfg_strings(sequences)
     return generated_strs
 
-
 def build_cfg_strings(sequences):
     seq_list = []
     for seq in sequences:
         key = list(seq.keys())[0]
+        emoji_seq = []
         for tuple in seq[key]:
             local_grammar = grammar
+            used_pos = {'N', 'A', 'V', 'S'}
             for index, word in enumerate(tuple):
                 local_grammar += "{} -> '{}'\n".format(key[index], word)
-                sentence = ""
-                for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
-                    sentence = ' '.join(s)
-                if len(sentence) > 0:
-                    seq_list.append((key, sentence))
+                used_pos.remove(key[index])
+            for k in used_pos:
+                local_grammar += "{} -> ' '\n".format(k)
+            sentence = ""
+            for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
+                sentence = ' '.join(s)
+            if len(sentence) > 0:
+                emoji_seq.append((key, sentence))
+        seq_list.append(emoji_seq)
     return seq_list
-
-
-def combine_clauses(clauses):
-    # clauses is a list of tuples in the following format:
-    # (<POS_string>, clause)
-    # The POS_string determines how I will connect the clauses.
-    # Since all clauses are 4 to start (if there is more than 1), NV + N or NP + NP.
-    sentence = ""
-    for tup in clauses:
-        new_clause = tup[1]
-        verb = ('V' in tup[0])
-        if sentence is "":
-            sentence += new_clause
-            verb = ('V' in tup[0])
-        elif not verb:
-            # We're given a N phrase after NP.
-            sentence += ' with ' + new_clause
-        else:
-            # We're given a NP to add onto NP.
-            sentence += ', and ' + new_clause
-    return sentence + "."
 
 
 def gen_clause(l):
@@ -95,7 +86,7 @@ def gen_clause(l):
     return cfg_values
 
 
-print(gen(l))
-#gen(l)
+#print(gen(l))
+gen(l)
 #for sentence in generate(CFG.fromstring(grammar), n=100):
 #    print(' '.join(sentence))
