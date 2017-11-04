@@ -78,7 +78,8 @@ def build_cfg_strings(sequences):
             #if len(sentence) > 0:
             #    print(sentence)
             #    emoji_seq.append((key, sentence))
-            seq_list.append(emoji_seq)
+            if len(emoji_seq) > 0:
+                seq_list.append(emoji_seq)
     return seq_list
 
 def clause_perms(clauses):
@@ -151,7 +152,7 @@ def format_sentence(l):
 emoji_str = "\U0001F4DA\U0001F412"
 l = ep.translate_emoji_string(emoji_str)
 #print(l)
-print(gen(l))
-#ret = gen(l)[0].split()
-#print(format_sentence(ret))
+#print(gen(l))
+ret = gen(l)[0].split()
+print(format_sentence(ret))
 
