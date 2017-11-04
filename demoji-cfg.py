@@ -28,14 +28,17 @@ ADV -> 'sadly'
 def gen(l):
     strs = []
     while(len(l)>= 4):
-        strs += gen_clause(l[:4])
+        strs += [gen_clause(l[:4])]
         l = l[4:]
-    strs += gen_clause(l)
 
+    if len(l) > 0:
+        strs += [gen_clause(l)]
+
+    generated_strs = build_cfg_strings(strs)
     # return find_best(strs)
-    pass
+    return strs
 
-def build_cfg_strings(dict):
+def build_cfg_strings(strs):
     pass
 
 def gen_clause(l):
@@ -56,4 +59,4 @@ def gen_clause(l):
     # return build_cfg_strings(cfg_values)
     return cfg_values
 
-print(gen_clause(l))
+print(gen(l))
