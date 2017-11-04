@@ -9,10 +9,6 @@ h1{
 	font-family: 'Bungee';font-size:45px;
 }
 
-textarea{
-	font-size: 100px;
-}
-
 #header{
 	background: rgba(300, 300, 300, 0.7);
 	border-radius: 25px;
@@ -38,13 +34,15 @@ textarea{
 	font-family: 'Bungee';font-size:18px;
 	border: 2px solid black;
 	padding: 10px 10px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: yellow;
 	color: black;
 	border-radius:12px;
 }
 
 button:focus {outline:0;}
+button:hover{opacity:0.9;}
+button:active {opacity:0.8;}
 div:focus {outline:0;}
 
 #enterButton{

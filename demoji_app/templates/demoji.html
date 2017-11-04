@@ -19,7 +19,7 @@
         <div id="twemoji">
             <textarea id="twemoji-picker"></textarea>
         </div>
-        <br>
+        <br><br><br><br><br><br><br><br><br><br><br>
         <div id="enterButton">
             <button id="enter" onclick="demoj()">Translate</button> 
         </div>
@@ -77,7 +77,7 @@
             function demoj(){
                 var value = document.getElementById("twemoji-picker").value;
                 var arr = emojiToUnicodeArray(value);                
-                document.getElementById('output').innerHTML = "Unicode: " + arr.toString();
+                //document.getElementById('output').innerHTML = "Unicode: " + arr.toString();
             }
 
             

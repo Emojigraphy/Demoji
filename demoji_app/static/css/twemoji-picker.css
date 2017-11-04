@@ -7,7 +7,6 @@
 }
 .twemoji-textarea { 
 	font-family: Delius;
-	color: white;
 	background-color: #FFF; 
 	border: 1px solid black; 
 	border-radius: 3px; 
@@ -54,11 +53,12 @@
 	font-weight: 700; 
 	line-height: 1; 
 	margin-right: 2px; 
-	opacity: .5; 
+	opacity: 0; 
 }
 .twemoji-picker-category .close:hover { 
-	opacity: .3 
+	opacity: 0 
 }
+
 .twemoji-list { 
 	overflow-y: scroll; 
 }

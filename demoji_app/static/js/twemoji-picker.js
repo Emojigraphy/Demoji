@@ -1026,6 +1026,8 @@
             this.$twemojiList.find('img').on('click', function() {
                 self.copyTwemoji($(this));
             });
+
+            this.$picker.show();
         },
 
         openPicker : function() {
@@ -1072,8 +1074,6 @@
 
         pasteAtCursor : function(text) {
             var sel, range;
-
-            text = text+",";
 
             if (window.getSelection) {
                 sel = window.getSelection();
