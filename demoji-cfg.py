@@ -8,15 +8,18 @@ import emojipaths as ep
 # A
 # S
 
-# l = [{'N': ['boy', 'man', 'person'], 'V': ['boyed', 'made'], 'A': ['boyish', 'manly', 'masculine'], 'S': ['manly']},
+# l = [{'N': ['boy', 'man', 'person'], 'V': [], 'A': ['boyish', 'manly', 'masculine'], 'S': ['manly']},
 # {'N': ['dog', 'pet', 'friend'], 'V': ['dogly'], 'A': ['doggy'], 'S': ['doggly']},
 # {'N': ['runner'], 'V': ['run', 'exercise'], 'A': ['athletic'], 'S': ['athletically']},
 # {'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']},
 # {'N': ['cat'], 'V': [], 'A': [''], 'S': ['', '', '']},
 #      ]
+
+# l = [{'n': ['boy']}, {'v':['run']}, {'n':['man']}]
+
 # test_clauses = [[('ANVS', "The boy runs"), ('ANVS', "The man runs"), ('ANVS', "The boy exercises")], [('ANVS',"the kid reads the book"),('ANVS',"the student reads the book"),('ANVS',"the kid reads an article")],
 #                 [('N',"the dog"),('N',"the pet"),('N',"the friend")]]
-perm = {1: ['a'], 2: ['an', 'nv'], 3:['anv', 'nvr'], 4: ['anvr']}
+perm = {1: ['n'], 2: ['an', 'nv'], 3:['anv', 'nvr'], 4: ['anvr']}
 
 grammar = """
 Se -> NP VP
@@ -130,8 +133,6 @@ def format_sentence(l):
     for word in l[1:]:
         ret += " " + word
     ret += "."
-    print(ret)
-
 
 
 #print(gen(l))
@@ -139,7 +140,7 @@ def format_sentence(l):
 #for sentence in generate(CFG.fromstring(grammar), n=100):
 #    print(' '.join(sentence))
 
-emoji_str = "\U0001F947\U0001F384\U0001F1EC\U0001F1EA\U0001F317"
+emoji_str = "\U0001F412"
 l = ep.translate_emoji_string(emoji_str)
 print(gen(l))
 # ret = [x.split() for x in gen(l)]
