@@ -7,6 +7,7 @@
 }
 .twemoji-textarea { 
 	font-family: Delius;
+	color: white;
 	background-color: #FFF; 
 	border: 1px solid black; 
 	border-radius: 3px; 
@@ -67,3 +68,4 @@
 .twemoji-list img:hover { 
 	background-color: #e7e7e7; 
 }
+

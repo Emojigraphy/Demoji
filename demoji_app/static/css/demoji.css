@@ -9,6 +9,10 @@ h1{
 	font-family: 'Bungee';font-size:45px;
 }
 
+textarea{
+	font-size: 100px;
+}
+
 #header{
 	background: rgba(300, 300, 300, 0.7);
 	border-radius: 25px;

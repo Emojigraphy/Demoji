@@ -39,16 +39,25 @@
             function emojiToUnicodeArray(str){
                 str = str.replace(/\ufe0f|\u200d/gm, ''); // strips unicode variation selector and zero-width joiner
                 var i = 0, c = 0, p = 0, r = [];
+                var emojiUnicode = "";
+
                 while (i < str.length){
                     c = str.charCodeAt(i++);
-                    if (p){
-                        r.push((65536+(p-55296<<10)+(c-56320)).toString(16));
+                   
+                    if(c=="44"){
+                        r.push(emojiUnicode);
+                        emojiUnicode = "";
+                    }
+                    else if (p){
+                        emojiUnicode = emojiUnicode+(' /\U000'+(65536+(p-55296<<10)+(c-56320)).toString(16).toUpperCase());
                         p = 0;
                     } else if (55296 <= c && c <= 56319){
                         p = c;
                     } else {
-                        r.push(c.toString(16));
+                        emojiUnicode = emojiUnicode + ('/\U000'+c.toString(16).toUpperCase());
                     }
+                    
+
                 }
                 return r;
             }
@@ -60,12 +69,6 @@
                 document.getElementById('output').innerHTML = "Unicode: " + arr.toString();
             }
 
-            $.getJSON($SCRIPT_ROOT + '/_array2python', {
-                wordlist: JSON.stringify(list)
-            }, function(data){
-                console.log(data.result)
-                $( "#result" ).text(data.result);
-            });
             
         </script>
     </body>

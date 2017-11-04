@@ -1073,6 +1073,8 @@
         pasteAtCursor : function(text) {
             var sel, range;
 
+            text = text+",";
+
             if (window.getSelection) {
                 sel = window.getSelection();
 
