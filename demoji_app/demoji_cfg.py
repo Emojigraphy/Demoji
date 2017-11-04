@@ -1,7 +1,7 @@
 from nltk.parse.generate import generate
 from nltk import CFG
 import itertools
-import emojipaths as ep
+import demoji_app.emojipaths as ep
 
 # N
 # V
@@ -147,6 +147,6 @@ def get_sentence(emoji_str):
     return format_sentence(ret)
 
 
-emoji_str = "\U0001F4E6\U0001F507\U0001F538\U0001F355"
-print(get_sentence(emoji_str))
+# emoji_str = "\U0001F4E6\U0001F507\U0001F538\U0001F355"
+# print(get_sentence(emoji_str))
 

@@ -53,12 +53,12 @@
                 $.ajax({
                     url: 'get_translation/',
                     data: {
-                        'emoji': r
+                        'emoji': str
                     },
                     dataType: 'json',
                     success: function(data) {
                         console.log(data['translation']);
-                        // $('#output').text(data['translation']);
+                        document.getElementById('output').innerHTML = data['translation'].toString();
                     }
                 });
                 return r;
