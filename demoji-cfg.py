@@ -49,9 +49,8 @@ def gen(l):
         sequences += [gen_clause(l)]
 
     #sequences.sort(key=len, reverse=True)
-    #print(sequences)
     generated_strs = build_cfg_strings(sequences)
-    print(generated_strs)
+    #print(generated_strs)
     return clause_perms(generated_strs)
 
 def build_cfg_strings(sequences):
@@ -69,15 +68,11 @@ def build_cfg_strings(sequences):
                     used_pos.remove(key[index])
                 for k in used_pos:
                     local_grammar += "{} -> ' '\n".format(k)
-                sentence = ""
                 for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
                     sentence = ' '.join(s)
                     if len(sentence) > 0:
-                        print(sentence)
+                        #print(sentence)
                         emoji_seq.append((key, sentence))
-            #if len(sentence) > 0:
-            #    print(sentence)
-            #    emoji_seq.append((key, sentence))
             if len(emoji_seq) > 0:
                 seq_list.append(emoji_seq)
     return seq_list
@@ -132,7 +127,6 @@ def gen_clause(l):
             a.append(l[emoji_index][pos_string[emoji_index]])
         pos_perms = list(itertools.product(*a))
         cfg_values[pos_string] = pos_perms
-    # return build_cfg_strings(cfg_values)
     return cfg_values
 
 
@@ -153,6 +147,6 @@ def get_sentence(emoji_str):
     return format_sentence(ret)
 
 
-# emoji_str = "\U0001F4E6"
-# print(get_sentence(emoji_str))
+emoji_str = "\U0001F4E6\U0001F507\U0001F538\U0001F355"
+print(get_sentence(emoji_str))
 

@@ -22,8 +22,8 @@
       <file leaf-file-name="demoji-cfg.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demoji-cfg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="155" column="26" lean-forward="false" selection-start-line="155" selection-start-column="26" selection-end-line="155" selection-end-column="26" />
+            <state relative-caret-position="185">
+              <caret line="96" column="49" lean-forward="true" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -32,8 +32,8 @@
       <file leaf-file-name="unicode_codes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/unicode_codes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="3572" column="36" lean-forward="false" selection-start-line="3572" selection-start-column="27" selection-end-line="3572" selection-end-column="36" />
+            <state relative-caret-position="276">
+              <caret line="3470" column="28" lean-forward="false" selection-start-line="3470" selection-start-column="19" selection-end-line="3470" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -46,8 +46,9 @@
       <find>translate</find>
       <find>{}</find>
       <find>quran</find>
-      <find>print</find>
       <find>U0001F17FU0001F17F</find>
+      <find>print</find>
+      <find>,</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -764,16 +765,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/unicode_codes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="3572" column="36" lean-forward="false" selection-start-line="3572" selection-start-column="27" selection-end-line="3572" selection-end-column="36" />
+        <state relative-caret-position="276">
+          <caret line="3470" column="28" lean-forward="false" selection-start-line="3470" selection-start-column="19" selection-end-line="3470" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demoji-cfg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="155" column="26" lean-forward="false" selection-start-line="155" selection-start-column="26" selection-end-line="155" selection-end-column="26" />
+        <state relative-caret-position="185">
+          <caret line="96" column="49" lean-forward="true" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
           <folding />
         </state>
       </provider>
