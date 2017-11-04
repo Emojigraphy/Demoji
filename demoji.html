@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Demoji</title>
+        <link rel="stylesheet" href="css/twemoji-picker.css" />
+        <link rel="stylesheet" href="css/demoji.css" />
+        <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Delius' rel='stylesheet'>
+    </head>
+   
+    <body>
+        <div id="header">
+            <h1> Demoji </h1>
+        </div>
+       
+        <div id="twemoji">
+            <textarea id="twemoji-picker"></textarea>
+        </div>
+        <br>
+        <div id="enterButton">
+            <button id="enter" onclick="demoj()">Translate</button> 
+        </div>
+
+        <div id="output"><div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/twemoji-picker.js"></script>
+        
+        <script>
+            $('#twemoji-picker').twemojiPicker({
+                placeholder: 'Type emojis here...',
+                icon: 'joy'
+            });
+           
+            // https://stackoverflow.com/questions/32597856/encode-emoji-to-unicode-code-point-php-js
+            function emojiToUnicodeArray(str){
+                str = str.replace(/\ufe0f|\u200d/gm, ''); // strips unicode variation selector and zero-width joiner
+                var i = 0, c = 0, p = 0, r = [];
+                while (i < str.length){
+                    c = str.charCodeAt(i++);
+                    if (p){
+                        r.push((65536+(p-55296<<10)+(c-56320)).toString(16));
+                        p = 0;
+                    } else if (55296 <= c && c <= 56319){
+                        p = c;
+                    } else {
+                        r.push(c.toString(16));
+                    }
+                }
+                return r;
+            }
+
+            // grab text from the textbox and convert print out the unicode value
+            function demoj(){
+                var value = document.getElementById("twemoji-picker").value;
+                var arr = emojiToUnicodeArray(value);                
+                document.getElementById('output').innerHTML = "Unicode: " + arr.toString();
+            }
+
+            $.getJSON($SCRIPT_ROOT + '/_array2python', {
+                wordlist: JSON.stringify(list)
+            }, function(data){
+                console.log(data.result)
+                $( "#result" ).text(data.result);
+            });
+            
+        </script>
+    </body>
+</html>
