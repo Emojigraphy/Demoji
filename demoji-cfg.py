@@ -144,18 +144,15 @@ def format_sentence(l):
     return ret
 
 
-#print(gen(l))
-#gen(l)
-#for sentence in generate(CFG.fromstring(grammar), n=100):
-#    print(' '.join(sentence))
+def get_sentence(emoji_str):
+    l = ep.translate_emoji_string(emoji_str)
+    for x in l:
+        if len(x) == 0:
+            l.remove(x)
+    ret = gen(l)[0].split()
+    return format_sentence(ret)
 
-emoji_str = "\U0001F4E6"
-l = ep.translate_emoji_string(emoji_str)
-for x in l:
-    if len(x) == 0:
-        l.remove(x)
-print(l)
-print(gen(l))
-ret = gen(l)[0].split()
-print(format_sentence(ret))
+
+# emoji_str = "\U0001F4E6"
+# print(get_sentence(emoji_str))
 
