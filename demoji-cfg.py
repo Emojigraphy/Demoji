@@ -51,32 +51,34 @@ def gen(l):
     sequences.sort(key=len, reverse=True)
     #print(sequences)
     generated_strs = build_cfg_strings(sequences)
+    print(generated_strs)
     return clause_perms(generated_strs)
 
 def build_cfg_strings(sequences):
     seq_list = []
     for seq in sequences:
-        key = list(seq.keys())[0]
-        emoji_seq = []
-        for tuple in seq[key]:
-            local_grammar = grammar
-            used_pos = {'n', 'a', 'v', 'r'}
-            for index, word in enumerate(tuple):
-                word = word.replace("'", "") if "'" in word else word
-                word = word + 's' if key[index] is 'v' else word
-                local_grammar += "{} -> '{}'\n".format(key[index], word)
-                used_pos.remove(key[index])
-            for k in used_pos:
-                local_grammar += "{} -> ' '\n".format(k)
-            sentence = ""
-            for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
-                sentence = ' '.join(s)
-                if len(sentence) > 0:
-                    emoji_seq.append((key, sentence))
+        for key in seq.keys():
+            emoji_seq = []
+            for tuple in seq[key]:
+                local_grammar = grammar
+                used_pos = {'n', 'a', 'v', 'r'}
+                for index, word in enumerate(tuple):
+                    word = word.replace("'", "") if "'" in word else word
+                    word = word + 's' if key[index] is 'v' else word
+                    local_grammar += "{} -> '{}'\n".format(key[index], word)
+                    used_pos.remove(key[index])
+                for k in used_pos:
+                    local_grammar += "{} -> ' '\n".format(k)
+                sentence = ""
+                for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
+                    sentence = ' '.join(s)
+                    if len(sentence) > 0:
+                        print(sentence)
+                        emoji_seq.append((key, sentence))
             #if len(sentence) > 0:
             #    print(sentence)
             #    emoji_seq.append((key, sentence))
-        seq_list.append(emoji_seq)
+            seq_list.append(emoji_seq)
     return seq_list
 
 def clause_perms(clauses):
@@ -146,9 +148,10 @@ def format_sentence(l):
 #for sentence in generate(CFG.fromstring(grammar), n=100):
 #    print(' '.join(sentence))
 
-emoji_str = "\U0001F4DA\U0001F412\U0001F6F3"
+emoji_str = "\U0001F4DA\U0001F412"
 l = ep.translate_emoji_string(emoji_str)
 #print(l)
-ret = gen(l)[0].split()
-print(format_sentence(ret))
+print(gen(l))
+#ret = gen(l)[0].split()
+#print(format_sentence(ret))
 
