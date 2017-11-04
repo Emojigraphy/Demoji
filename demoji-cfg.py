@@ -45,7 +45,7 @@ def gen(l):
 
     if len(l) > 0:
         sequences += [gen_clause(l)]
-
+    sequences.sort(key=len, reverse=True)
     generated_strs = build_cfg_strings(sequences)
     #print(generated_strs)
     return clause_perms(generated_strs)
@@ -125,6 +125,15 @@ def gen_clause(l):
     return cfg_values
 
 
+def format_sentence(l):
+    ret = l[0][0].upper() + l[0][1:].lower()
+    for word in l[1:]:
+        ret += " " + word
+    ret += "."
+    print(ret)
+
+
+
 #print(gen(l))
 #gen(l)
 #for sentence in generate(CFG.fromstring(grammar), n=100):
@@ -133,3 +142,5 @@ def gen_clause(l):
 emoji_str = "\U0001F947\U0001F384\U0001F1EC\U0001F1EA\U0001F317"
 l = ep.translate_emoji_string(emoji_str)
 print(gen(l))
+# ret = [x.split() for x in gen(l)]
+# format_sentence(ret[0])
