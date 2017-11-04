@@ -25,7 +25,7 @@ grammar = """
 Se -> NP VP
 NP -> Det AP
 Det -> 'the'
-AP -> a n
+AP -> a n 
 VP -> v r
 """
 
@@ -41,16 +41,16 @@ def gen(l):
     # 3. Run those cfg_strings through the tree to create clause strings.
     # 4. Combine clause strings to create sentences. 
     # 5. Judge the sentences.
-    strs = []
     while(len(l)>= 4):
         sequences += [gen_clause(l[:4])]
         l = l[4:]
 
     if len(l) > 0:
         sequences += [gen_clause(l)]
+
     sequences.sort(key=len, reverse=True)
+    #print(sequences)
     generated_strs = build_cfg_strings(sequences)
-    #print(generated_strs)
     return clause_perms(generated_strs)
 
 def build_cfg_strings(sequences):
@@ -62,6 +62,8 @@ def build_cfg_strings(sequences):
             local_grammar = grammar
             used_pos = {'n', 'a', 'v', 'r'}
             for index, word in enumerate(tuple):
+                word = word.replace("'", "") if "'" in word else word
+                word = word + 's' if key[index] is 'v' else word
                 local_grammar += "{} -> '{}'\n".format(key[index], word)
                 used_pos.remove(key[index])
             for k in used_pos:
@@ -69,8 +71,11 @@ def build_cfg_strings(sequences):
             sentence = ""
             for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
                 sentence = ' '.join(s)
-            if len(sentence) > 0:
-                emoji_seq.append((key, sentence))
+                if len(sentence) > 0:
+                    emoji_seq.append((key, sentence))
+            #if len(sentence) > 0:
+            #    print(sentence)
+            #    emoji_seq.append((key, sentence))
         seq_list.append(emoji_seq)
     return seq_list
 
@@ -141,9 +146,9 @@ def format_sentence(l):
 #for sentence in generate(CFG.fromstring(grammar), n=100):
 #    print(' '.join(sentence))
 
-emoji_str = "\U0001F412"
+emoji_str = "\U0001F4DA\U0001F412\U0001F6F3"
 l = ep.translate_emoji_string(emoji_str)
-#print(gen(l))
+#print(l)
 ret = gen(l)[0].split()
 print(format_sentence(ret))
 
