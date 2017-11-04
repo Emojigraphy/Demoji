@@ -41,14 +41,14 @@ def gen(l):
     # 3. Run those cfg_strings through the tree to create clause strings.
     # 4. Combine clause strings to create sentences. 
     # 5. Judge the sentences.
-    while(len(l)>= 4):
-        sequences += [gen_clause(l[:4])]
-        l = l[4:]
+    while(len(l)>= 2):
+        sequences += [gen_clause(l[:2])]
+        l = l[2:]
 
     if len(l) > 0:
         sequences += [gen_clause(l)]
 
-    sequences.sort(key=len, reverse=True)
+    #sequences.sort(key=len, reverse=True)
     #print(sequences)
     generated_strs = build_cfg_strings(sequences)
     print(generated_strs)
@@ -149,10 +149,13 @@ def format_sentence(l):
 #for sentence in generate(CFG.fromstring(grammar), n=100):
 #    print(' '.join(sentence))
 
-emoji_str = "\U0001F4DA\U0001F412"
+emoji_str = "\U0001F4E6"
 l = ep.translate_emoji_string(emoji_str)
-#print(l)
-#print(gen(l))
+for x in l:
+    if len(x) == 0:
+        l.remove(x)
+print(l)
+print(gen(l))
 ret = gen(l)[0].split()
 print(format_sentence(ret))
 
