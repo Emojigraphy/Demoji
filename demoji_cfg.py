@@ -71,7 +71,6 @@ def build_cfg_strings(sequences):
                 for s in generate(CFG.fromstring(local_grammar), n=len(seq)):
                     sentence = ' '.join(s)
                     if len(sentence) > 0:
-                        #print(sentence)
                         emoji_seq.append((key, sentence))
             if len(emoji_seq) > 0:
                 seq_list.append(emoji_seq)
@@ -146,6 +145,9 @@ def get_sentence(emoji_str):
     for x in l:
         if len(x) == 0:
             l.remove(x)
+        else:
+            for key in x.keys():
+                x[key] = [x[key][0]]
     ret = gen(l)[0].split()
     return format_sentence(ret)
 

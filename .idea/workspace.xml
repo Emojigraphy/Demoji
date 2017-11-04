@@ -4,6 +4,7 @@
     <list default="true" id="20c68205-ffdb-48bf-894a-4d72f20b6115" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/demoji_app/demoji_cfg.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demoji_cfg.py" afterPath="$PROJECT_DIR$/demoji_cfg.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,44 +18,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="emojipaths.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demoji_app/emojipaths.py">
+      <file leaf-file-name="demoji_cfg.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+            <state relative-caret-position="671">
+              <caret line="150" column="24" lean-forward="true" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demoji_cfg.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="demoji_cfg.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demoji_app/demoji_cfg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="486">
+              <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unicode_codes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demoji_app/unicode_codes.py">
+      <file leaf-file-name="emojipaths.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demoji_app/emojipaths.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demoji_cfg.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="414">
+              <caret line="72" column="34" lean-forward="true" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,9 +59,9 @@
       <find>translate</find>
       <find>{}</find>
       <find>quran</find>
-      <find>print</find>
       <find>,</find>
       <find>U0001F17FU0001F17F</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -80,8 +73,8 @@
         <option value="$PROJECT_DIR$/emojipaths.py" />
         <option value="$PROJECT_DIR$/demoji-cfg.py" />
         <option value="$PROJECT_DIR$/demoji_app/demoji_cfg.py" />
-        <option value="$PROJECT_DIR$/demoji_cfg.py" />
         <option value="$PROJECT_DIR$/demoji_app/emojipaths.py" />
+        <option value="$PROJECT_DIR$/demoji_cfg.py" />
       </list>
     </option>
   </component>
@@ -392,7 +385,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -640,14 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demoji_app/unicode_codes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -656,21 +641,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoji_app/demoji_cfg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demoji_app/emojipaths.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+        <state relative-caret-position="414">
+          <caret line="72" column="34" lean-forward="true" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="34" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="150" column="24" lean-forward="true" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demoji_app/demoji_cfg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
