@@ -1,3 +1,30 @@
+from nltk.parse.generate import generate
+from nltk import CFG
+import itertools
+
+# N
+# V
+# A
+# S
+
+l = [{'N': ['boy', 'man', 'person'], 'V': ['boyed', 'made'], 'A': ['boyish', 'manly', 'masculine'], 'S': ['manly']},
+{'N': ['dog', 'pet', 'friend'], 'V': ['dogly'], 'A': ['doggy'], 'S': ['doggly']},
+{'N': ['runner'], 'V': ['run', 'exercise'], 'A': ['athletic'], 'S': ['athletically']},
+{'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']}]
+perm = {1: ['N'], 2: ['AN', 'NV'], 3:['ANV', 'NVS'], 4: ['ANVS']}
+
+grammar = """
+S -> NP VP
+NP -> Det AP
+Det -> 'The'
+AP -> ADJ N
+ADJ -> 'sad'
+N -> 'dog'
+VP -> V ADV
+V -> 'ran'
+ADV -> 'sadly'
+"""
+
 def gen(l):
     strs = []
     while(len(l)>= 4):
