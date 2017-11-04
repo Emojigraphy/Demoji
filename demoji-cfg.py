@@ -26,6 +26,11 @@ ADV -> 'sadly'
 """
 
 def gen(l):
+    # 1. list of gen_clause returns.
+    # 2. Convert that list of dictionaries into cfg_strings. (each entry in the list will be a different clause)
+    # 3. Run those cfg_strings through the tree to create clause strings.
+    # 4. Combine clause strings to create sentences. 
+    # 5. Judge the sentences.
     strs = []
     while(len(l)>= 4):
         strs += [gen_clause(l[:4])]
