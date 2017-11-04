@@ -50,6 +50,17 @@
                         r.push(c.toString(16));
                     }
                 }
+                $.ajax({
+                    url: 'get_translation/',
+                    data: {
+                        'emoji': r
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data['translation']);
+                        // $('#output').text(data['translation']);
+                    }
+                });
                 return r;
             }
 
