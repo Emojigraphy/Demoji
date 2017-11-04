@@ -56,6 +56,27 @@ def build_cfg_strings(sequences):
     return seq_list
 
 
+def combine_clauses(clauses):
+    # clauses is a list of tuples in the following format:
+    # (<POS_string>, clause)
+    # The POS_string determines how I will connect the clauses.
+    # Since all clauses are 4 to start (if there is more than 1), NV + N or NP + NP.
+    sentence = ""
+    for tup in clauses:
+        new_clause = tup[1]
+        verb = ('V' in tup[0])
+        if sentence is "":
+            sentence += new_clause
+            verb = ('V' in tup[0])
+        elif not verb:
+            # We're given a N phrase after NP.
+            sentence += ' with ' + new_clause
+        else:
+            # We're given a NP to add onto NP.
+            sentence += ', and ' + new_clause
+    return sentence + "."
+
+
 def gen_clause(l):
     # Returns CFG strings for all possible permutations.
 
