@@ -24,7 +24,7 @@ perm = {1: ['n'], 2: ['an', 'nv'], 3:['anv', 'nvr'], 4: ['anvr']}
 grammar = """
 Se -> NP VP
 NP -> Det AP
-Det -> 'The'
+Det -> 'the'
 AP -> a n
 VP -> v r
 """
@@ -133,6 +133,7 @@ def format_sentence(l):
     for word in l[1:]:
         ret += " " + word
     ret += "."
+    return ret
 
 
 #print(gen(l))
@@ -142,6 +143,7 @@ def format_sentence(l):
 
 emoji_str = "\U0001F412"
 l = ep.translate_emoji_string(emoji_str)
-print(gen(l))
-# ret = [x.split() for x in gen(l)]
-# format_sentence(ret[0])
+#print(gen(l))
+ret = gen(l)[0].split()
+print(format_sentence(ret))
+
