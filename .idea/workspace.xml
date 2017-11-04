@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20c68205-ffdb-48bf-894a-4d72f20b6115" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/demoji_cfg.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demoji_app/demoji_cfg.py" afterPath="$PROJECT_DIR$/demoji_app/demoji_cfg.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="demoji_cfg.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demoji_app/demoji_cfg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+            <state relative-caret-position="329">
+              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -48,6 +47,8 @@
       <find>quran</find>
       <find>,</find>
       <find>U0001F17FU0001F17F</find>
+      <find>gen(l</find>
+      <find>and_count</find>
       <find>print</find>
     </findStrings>
   </component>
@@ -59,9 +60,9 @@
       <list>
         <option value="$PROJECT_DIR$/emojipaths.py" />
         <option value="$PROJECT_DIR$/demoji-cfg.py" />
-        <option value="$PROJECT_DIR$/demoji_app/demoji_cfg.py" />
         <option value="$PROJECT_DIR$/demoji_app/emojipaths.py" />
         <option value="$PROJECT_DIR$/demoji_cfg.py" />
+        <option value="$PROJECT_DIR$/demoji_app/demoji_cfg.py" />
       </list>
     </option>
   </component>
@@ -620,6 +621,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="150" column="24" lean-forward="true" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/demoji_app/emojipaths.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1296">
@@ -630,17 +638,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoji_cfg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="150" column="24" lean-forward="true" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demoji_app/demoji_cfg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="47" column="12" lean-forward="true" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+        <state relative-caret-position="329">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
           <folding />
         </state>
       </provider>

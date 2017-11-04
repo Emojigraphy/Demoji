@@ -3,22 +3,6 @@ from nltk import CFG
 import itertools
 import demoji_app.emojipaths as ep
 
-# N
-# V
-# A
-# S
-
-# l = [{'N': ['boy', 'man', 'person'], 'V': [], 'A': ['boyish', 'manly', 'masculine'], 'S': ['manly']},
-# {'N': ['dog', 'pet', 'friend'], 'V': ['dogly'], 'A': ['doggy'], 'S': ['doggly']},
-# {'N': ['runner'], 'V': ['run', 'exercise'], 'A': ['athletic'], 'S': ['athletically']},
-# {'N': [], 'V': [], 'A': ['strange'], 'S': ['quickly', 'speedily', 'hastily']},
-# {'N': ['cat'], 'V': [], 'A': [''], 'S': ['', '', '']},
-#      ]
-
-# l = [{'n': ['boy']}, {'v':['run']}, {'n':['man']}]
-
-# test_clauses = [[('ANVS', "The boy runs"), ('ANVS', "The man runs"), ('ANVS', "The boy exercises")], [('ANVS',"the kid reads the book"),('ANVS',"the student reads the book"),('ANVS',"the kid reads an article")],
-#                 [('N',"the dog"),('N',"the pet"),('N',"the friend")]]
 perm = {1: ['n'], 2: ['an', 'nv'], 3:['anv', 'nvr'], 4: ['anvr']}
 
 grammar = """
@@ -29,10 +13,11 @@ AP -> a n
 VP -> v r
 """
 
-# combine_grammar = """
-# Se -> ANVS N
-# NP -> 'with' N
-# """
+verb_endings = {'h', 's', 'y'}
+
+class WordCounts:
+    def __init__(self):
+        self.and_count = 0
 
 def gen(l):
     sequences = []
@@ -41,7 +26,12 @@ def gen(l):
     # 3. Run those cfg_strings through the tree to create clause strings.
     # 4. Combine clause strings to create sentences. 
     # 5. Judge the sentences.
-    while(len(l)>= 2):
+
+    while len(l) > 3:
+        sequences += [gen_clause(l[:3])]
+        l = l[3:]
+
+    if len(l) > 2:
         sequences += [gen_clause(l[:2])]
         l = l[2:]
 
@@ -53,17 +43,33 @@ def gen(l):
     #print(generated_strs)
     return clause_perms(generated_strs)
 
+
+def cleanup_word(word, pos):
+    word = word.replace("'", "") if "'" in word else word
+    if pos is 'v':
+        if word[-1:] is 'y':
+            word = word[:len(word) - 1]
+            word += 'ies'
+        elif word[-1:] in verb_endings:
+            word += 'es'
+        else:
+            word += 's'
+    return word
+
+
 def build_cfg_strings(sequences):
     seq_list = []
     for seq in sequences:
         for key in seq.keys():
             emoji_seq = []
             for tuple in seq[key]:
+                print(key)
                 local_grammar = grammar
                 used_pos = {'n', 'a', 'v', 'r'}
                 for index, word in enumerate(tuple):
-                    word = word.replace("'", "") if "'" in word else word
-                    word = word + 's' if key[index] is 'v' else word
+                    #word = word.replace("'", "") if "'" in word else word
+                    #word = word + 's' if key[index] is 'v' else word
+                    word = cleanup_word(word, key[index])
                     local_grammar += "{} -> '{}'\n".format(key[index], word)
                     used_pos.remove(key[index])
                 for k in used_pos:
@@ -72,6 +78,7 @@ def build_cfg_strings(sequences):
                     sentence = ' '.join(s)
                     if len(sentence) > 0:
                         emoji_seq.append((key, sentence))
+                        break
             if len(emoji_seq) > 0:
                 seq_list.append(emoji_seq)
     return seq_list
@@ -83,14 +90,15 @@ def clause_perms(clauses):
     # Since all clauses are 4 to start (if there is more than 1), NV + N or NP + NP.
     # RETURN: A list of strings
     ret = [""]
+    word_counts = WordCounts()
     for clause_perms in clauses:
         new_ret = []
         for perm in clause_perms:
-            new_ret += [combine_clauses(start_clause, perm) for start_clause in ret]
+            new_ret += [combine_clauses(start_clause, perm, word_counts) for start_clause in ret]
         ret = new_ret
     return ret
 
-def combine_clauses(clause, tup2):
+def combine_clauses(clause, tup2, word_counts):
     # Tups are (<POS_string>, clause).
     # tup1 is guarenteed to either have a NV structure or be empty,
     # tup2 could be either another NV or jut a N.
@@ -105,7 +113,12 @@ def combine_clauses(clause, tup2):
         ret += ' with ' + new_clause
     else:
         # We're given a NP to add onto NP.
-        ret += ', and ' + new_clause
+        if word_counts.and_count == 1:
+            ret += '. ' + new_clause[0].upper() + new_clause[1:]
+            word_counts.and_count = 0
+        else:
+            ret += ', and ' + new_clause
+            word_counts.and_count += 1
     return ret
 
 
@@ -134,7 +147,7 @@ def format_sentence(l):
         return ""
     ret = l[0][0].upper() + l[0][1:].lower()
     for word in l[1:]:
-        if word is ',':
+        if word is ',' or word is '.':
             ret += word
         else:
             ret += " " + word
@@ -150,10 +163,6 @@ def get_sentence(emoji_str):
         else:
             for key in x.keys():
                 x[key] = [x[key][0]]
+
     ret = gen(l)[0].split()
     return format_sentence(ret)
-
-
-emoji_str = "\U0001F4E6\U0001F507\U0001F538\U0001F355"
-print(get_sentence(emoji_str))
-
