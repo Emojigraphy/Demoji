@@ -67,6 +67,38 @@ def build_cfg_strings(sequences):
         seq_list.append(emoji_seq)
     return seq_list
 
+def clause_perms(clauses):
+    # clauses is a list of tuples in the following format:
+    # (<POS_string>, clause)
+    # The POS_string determines how I will connect the clauses.
+    # Since all clauses are 4 to start (if there is more than 1), NV + N or NP + NP.
+    # RETURN: A list of strings
+    ret = [""]
+    for clause_perms in clauses:
+        new_ret = []
+        for perm in clause_perms:
+            new_ret += [combine_clauses(start_clause, perm) for start_clause in ret]
+        ret = new_ret
+    return ret
+
+def combine_clauses(clause, tup2):
+    # Tups are (<POS_string>, clause).
+    # tup1 is guarenteed to either have a NV structure or be empty,
+    # tup2 could be either another NV or jut a N.
+    ret = clause
+    new_clause = tup2[1]
+    verb = ('V' in tup2[0])
+    if ret is "":
+        # This is our first clause.
+        ret += new_clause
+    elif not verb:
+        # We're given a N phrase after NP.
+        ret += ' with ' + new_clause
+    else:
+        # We're given a NP to add onto NP.
+        ret += ', and ' + new_clause
+    return ret
+
 
 def gen_clause(l):
     # Returns CFG strings for all possible permutations.
