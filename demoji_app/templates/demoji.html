@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     
     <head>
         <meta charset="utf-8">
         <title>Demoji</title>
-        <link rel="stylesheet" href="css/twemoji-picker.css" />
-        <link rel="stylesheet" href="css/demoji.css" />
+        <link rel="stylesheet" href="{% static 'css/twemoji-picker.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/demoji.css' %}" />
         <link href='https://fonts.googleapis.com/css?family=Bungee' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Delius' rel='stylesheet'>
     </head>
@@ -26,7 +27,7 @@
         <div id="output"><div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/twemoji-picker.js"></script>
+        <script src="{% static 'js/twemoji-picker.js' %}"></script>
         
         <script>
             $('#twemoji-picker').twemojiPicker({
