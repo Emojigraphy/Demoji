@@ -1,4 +1,4 @@
-﻿astroid==1.5.3
+astroid==1.5.3
 boto==2.48.0
 bz2file==0.98
 certifi==2017.7.27.1
