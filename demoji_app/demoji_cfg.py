@@ -17,16 +17,25 @@ VP -> v r
 preps = [' with ', ' among ', ' for ', ' amidst ', ' by ', ' beside ']
 conjs = [', and ', ', but ', ' as soon as ', ' while ', '. ', '. Meanwhile, ',
          '. Then ', '. But shortly after, ', '. Although, ', '. However, ',
-         '. That said, ', '. But let me tell you something: ', '. Of course, ',
-         '. Because of that, ']
+         '. That said, ', '. Of course, ', '. Because of that, ']
 verb_endings = {'h', 's'}
+
+
+def gen_clause_range(l, r, sequences):
+    for x in range(r, 1, -1):
+        to_add = gen_clause(l[:x])
+        if len(to_add) != 0:
+            key = list(to_add.keys())[0]
+            sequences += [{key: to_add[key]}]
+            l = l[x:]
+            return l, sequences
+    return l, sequences
 
 def gen(l):
     sequences = []
-
-    while len(l) > 2:
-        sequences += [gen_clause(l[:2])]
-        l = l[2:]
+    for x in range(4, 1, -1):
+        while len(l) > x:
+            l, sequences = gen_clause_range(l, x, sequences)
 
     if len(l) > 0:
         sequences += [gen_clause(l)]
@@ -111,6 +120,7 @@ def gen_clause(l):
     # Example output:
     # {"NV": [['dog', 'run'], ['pet', 'exercise']]}
     cfg_values = {}
+    if len(l) == 0: return cfg_values
     for pos_string in perm[len(l)]:
         # a is a list of lists of possible words per POS. this will be turned into a permutation lists.
         a = []
@@ -121,6 +131,11 @@ def gen_clause(l):
             a.append(l[emoji_index][pos_string[emoji_index]])
         pos_perms = list(itertools.product(*a))
         cfg_values[pos_string] = pos_perms
+
+    for x in list(cfg_values.keys()):
+        if cfg_values[x] == []:
+            del cfg_values[x]
+
     return cfg_values
 
 
