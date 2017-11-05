@@ -25,7 +25,7 @@ SECRET_KEY = '*t_np1so8_)!^&ha6qsvay4mow-2eawvy3ske(^0j^@^k#x05d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.demoji.tech',]
+ALLOWED_HOSTS = ['.demoji.tech', 'localhost']
 
 
 # Application definition
