@@ -14,7 +14,7 @@ AP -> a n
 VP -> v r
 """
 
-preps = [' with ', ' among ', ' for ', ' amidst ', ' by ', ' beside ']
+preps = [' with ', ' for ', ' by ', ' beside ']
 conjs = [', and ', ', but ', ' as soon as ', ' while ', '. ', '. Meanwhile, ',
          '. Then ', '. But shortly after, ', '. Although, ', '. However, ',
          '. That said, ', '. Of course, ', '. Because of that, ']
@@ -47,7 +47,7 @@ def gen(l):
 def cleanup_word(word, pos):
     word = word.replace("'", "") if "'" in word else word
     if pos is 'v':
-        if word[-1:] in verb_endings:
+        if word[-1:] in verb_endings and word[-2:] is not 'g':
             word += 'es'
         else:
             word += 's'
