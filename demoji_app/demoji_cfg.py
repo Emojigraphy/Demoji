@@ -15,12 +15,11 @@ VP -> v r
 """
 
 preps = [' with ', ' among ', ' for ', ' amidst ', ' by ', ' beside ']
-conjs = [', and ', ', but ']
+conjs = [', and ', ', but ', ' as soon as ', ' while ', '. ', '. Meanwhile, ',
+         '. Then ', '. But shortly after, ', '. Although, ', '. However, ',
+         '. That said, ', '. But let me tell you something: ', '. Of course, ',
+         '. Because of that, ']
 verb_endings = {'h', 's'}
-
-class WordCounts:
-    def __init__(self):
-        self.and_count = 0
 
 def gen(l):
     sequences = []
@@ -32,7 +31,6 @@ def gen(l):
     if len(l) > 0:
         sequences += [gen_clause(l)]
 
-    print(sequences)
     generated_strs = build_cfg_strings(sequences)
     return clause_perms(generated_strs)
 
@@ -76,15 +74,14 @@ def clause_perms(clauses):
     # Since all clauses are 4 to start (if there is more than 1), NV + N or NP + NP.
     # RETURN: A list of strings
     ret = [""]
-    word_counts = WordCounts()
     for clause_perms in clauses:
         new_ret = []
         for perm in clause_perms:
-            new_ret += [combine_clauses(start_clause, perm, word_counts) for start_clause in ret]
+            new_ret += [combine_clauses(start_clause, perm) for start_clause in ret]
         ret = new_ret
     return ret
 
-def combine_clauses(clause, tup2, word_counts):
+def combine_clauses(clause, tup2):
     # Tups are (<POS_string>, clause).
     # tup1 is guarenteed to either have a NV structure or be empty,
     # tup2 could be either another NV or jut a N.
@@ -99,12 +96,11 @@ def combine_clauses(clause, tup2, word_counts):
         ret += random.choice(preps) + new_clause
     else:
         # We're given a NP to add onto NP.
-        if word_counts.and_count == 1:
+        conj = random.choice(conjs)
+        if conj == '. ':
             ret += '. ' + new_clause[0].upper() + new_clause[1:]
-            word_counts.and_count = 0
         else:
-            ret += random.choice(conjs) + new_clause
-            word_counts.and_count += 1
+            ret += conj + new_clause
     return ret
 
 
