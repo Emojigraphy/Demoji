@@ -890,7 +890,7 @@
         iconSize: 25,
         height: 100,
         width: null,
-        category: ['smile', 'cherry-blossom', 'video-game', 'oncoming-automobile', 'symbols'],
+        category: ['smile', 'cherry-blossom', 'video-game', 'oncoming-automobile'],
         categorySize: 20,
         pickerPosition: null,
         pickerHeight: 150,
@@ -927,7 +927,7 @@
             var self = this;
 
             var category      = this.options.category;
-            this.categoryName = ['people', 'nature', 'object', 'place', 'symbol'];
+            this.categoryName = ['people', 'nature', 'object', 'place'];
 
             this.$picker.append('<div class="twemoji-picker-category"></div>');
             this.$pickerCategory = this.$picker.find('.twemoji-picker-category');
